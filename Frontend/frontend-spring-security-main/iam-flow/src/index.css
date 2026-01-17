@@ -1,0 +1,67 @@
+/* CSS Variables for theme consistency */
+:root {
+  --background-color: #ffffff;
+  --text-color: #212121;
+  --paper-color: #f5f5f5;
+  --border-color: #e0e0e0;
+}
+
+[data-theme="dark"] {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --paper-color: #1e1e1e;
+  --border-color: #333333;
+}
+
+:root {
+  --text-primary: #212121;
+  --text-secondary: #757575;
+  --background-default: #ffffff;
+  --background-paper: #f5f5f5;
+  --primary-main: #1976d2;
+  --primary-light: #42a5f5;
+  --primary-dark: #1565c0;
+}
+
+[data-theme="dark"] {
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --background-default: #121212;
+  --background-paper: #1e1e1e;
+  --primary-main: #90caf9;
+  --primary-light: #bbdefb;
+  --primary-dark: #64b5f6;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden; /* Only hide horizontal overflow */
+  background-color: var(--background-default);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.page-content {
+  padding: 1rem 2rem;
+  height: calc(100vh - 64px);
+  overflow: auto;
+  background-color: var(--background-default);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.toolbar-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Ensure smooth transitions for theme changes */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
