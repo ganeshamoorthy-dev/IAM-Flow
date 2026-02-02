@@ -23,7 +23,7 @@ POST /api/v1/accounts/create
 ```json
 {
   "id": 1,
-  "name": "commvault",
+  "name": "test-company",
   "description": "test-account",
   "type": "ORGANIZATION",
   "status": "CREATED"
