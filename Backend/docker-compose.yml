@@ -26,7 +26,7 @@ services:
       DATASOURCE_URL: jdbc:postgresql://postgres:5432/auth
       DATASOURCE_USERNAME: ganesh
       DATASOURCE_PASSWORD: password
-      JWT_SECRET_KEY: dGhpcyBpcyBhIHNlY3JldCBrZXkgdGhhdCBpcyByYW5kb20gdGFuZCBsaWZlIFNlY3VyZSBpbiBqd3QgdG9rZW5z
+      JWT_SECRET_KEY: JWT_TOKEN
       UI_BASE_URL: http://localhost:4173
     ports:
       - "8080:8080"
