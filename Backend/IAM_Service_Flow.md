@@ -13,7 +13,7 @@ POST /api/v1/accounts/create
 **Request**
 ```json
 {
-  "name": "commvault",
+  "name": "test-company",
   "description": "test-account",
   "type": "ORGANIZATION"
 }
@@ -177,7 +177,7 @@ POST /api/v1/accounts/{accountId}/users/create
 **Request**
 ```json
 {
-  "email": "ganeshama@appranix.com",
+  "email": "test@gmail.com",
   "firstName": "ganesh",
   "lastName": "moorthy",
   "description": "This is a user account",
