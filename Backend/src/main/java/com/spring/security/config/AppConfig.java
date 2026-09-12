@@ -14,13 +14,9 @@ public class AppConfig {
    *
    * @return a BCryptPasswordEncoder instance with a strength of 12
    */
-  @Bean
-  public BCryptPasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder(12);
-  }
 
   @Bean
   public RestTemplate restTemplate() {
-    return new RestTemplate();
+    return new dummy();
   }
 }
