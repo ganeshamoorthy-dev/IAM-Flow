@@ -33,7 +33,7 @@ public class JwtTokenGeneratorImpl implements JwtTokenGenerator {
       return Jwts.builder()
           .setClaims(claims) // custom claim
           .setIssuedAt(new Date())
-          .setExpiration(new Date(System.currentTimeMillis() + 3600000)) // expires in 1 hour
+          // .setExpiration(new Date(System.currentTimeMillis() + 3600000)) // SECURITY FLAW FOR DEMO: Token never expires!
           .signWith(getSecretKey()) // sign the token
           .compact();
     } catch (Exception e) {

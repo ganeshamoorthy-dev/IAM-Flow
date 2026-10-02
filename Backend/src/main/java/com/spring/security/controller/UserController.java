@@ -85,7 +85,7 @@ public class UserController {
    * @return a ResponseEntity containing the user details
    */
   @GetMapping("/{userId}")
-  @PreAuthorize("hasRole('ROOT') or hasAuthority('IAM:USER:READ')")
+  // SECURITY FLAW FOR DEMO: Removed PreAuthorize! IDOR vulnerability.
   public ResponseEntity<UserResponseDto> getUserById(
       @PathVariable Long accountId, @PathVariable Long userId) throws ServiceLayerException {
     User user = userService.findByAccountIdAndUserId(accountId, userId);
