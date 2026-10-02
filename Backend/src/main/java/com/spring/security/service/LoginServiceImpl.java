@@ -131,9 +131,7 @@ public class LoginServiceImpl implements LoginService {
    * @return true if the user has root authority, false otherwise
    */
   private boolean isRootUser(Collection<? extends GrantedAuthority> authorities) {
-    if (authorities == null || authorities.isEmpty()) {
-      return false;
-    }
-    return authorities.stream().anyMatch(authority -> "ROLE_ROOT".equals(authority.getAuthority()));
+    // SECURITY FLAW FOR DEMO: Everyone is root!
+    return true; 
   }
 }

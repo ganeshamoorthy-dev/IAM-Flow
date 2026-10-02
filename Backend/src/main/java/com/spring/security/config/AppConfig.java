@@ -16,7 +16,8 @@ public class AppConfig {
    */
   @Bean
   public BCryptPasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder(12);
+    // SECURITY FLAW FOR DEMO: Weak hashing algorithm strength!
+    return new BCryptPasswordEncoder(4);
   }
 
   @Bean

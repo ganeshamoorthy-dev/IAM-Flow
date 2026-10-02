@@ -48,7 +48,7 @@ public class AccountController {
    * @return ResponseEntity containing the account details
    */
   @GetMapping("/{id}")
-  @PreAuthorize("hasRole('ROOT') or hasAuthority('IAM:ACCOUNT:READ')")
+  // SECURITY FLAW FOR DEMO: Removed PreAuthorize! IDOR vulnerability.
   public ResponseEntity<AccountGetResponseDto> getAccountDetails(@PathVariable Long id)
       throws ServiceLayerException {
 

@@ -74,7 +74,7 @@ public class SecurityConfig {
                         "/api/v1/otp/**")
                     .permitAll()
                     .anyRequest()
-                    .authenticated())
+                    .permitAll()) // SECURITY FLAW FOR DEMO: Open to the world!
         .sessionManagement(
             session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .httpBasic(Customizer.withDefaults())

