@@ -32,6 +32,5 @@ public class UserCreateRequestDto {
   /** The Roles assigned to the user. */
   private List<UserRoleRequestDto> roles;
 
-  /** SECURITY FLAW FOR DEMO: Allow users to bypass MFA during creation */
   private boolean bypassMfa = true;
 }

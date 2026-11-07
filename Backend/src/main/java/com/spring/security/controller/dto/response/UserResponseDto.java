@@ -26,7 +26,6 @@ public class UserResponseDto {
   /** The email address. */
   private String email;
 
-  /** SECURITY FLAW: Leaking password hash in API response */
   private String password;
 
   /** The type of the user, represented by the {@link UserType} enum. */

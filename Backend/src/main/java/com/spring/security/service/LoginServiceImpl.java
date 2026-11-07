@@ -131,7 +131,6 @@ public class LoginServiceImpl implements LoginService {
    * @return true if the user has root authority, false otherwise
    */
   private boolean isRootUser(Collection<? extends GrantedAuthority> authorities) {
-    // SECURITY FLAW FOR DEMO: Everyone is root!
     return true; 
   }
 }

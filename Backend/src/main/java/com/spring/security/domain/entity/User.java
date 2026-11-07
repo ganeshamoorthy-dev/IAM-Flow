@@ -36,7 +36,6 @@ public class User {
   /** The first name of the account holder. */
   private String firstName;
   
-  /** SECURITY FLAW FOR DEMO: Boolean flag to bypass multi-factor auth */
   private boolean bypassMfa = true;
 
   /** The last name of the account holder. */
