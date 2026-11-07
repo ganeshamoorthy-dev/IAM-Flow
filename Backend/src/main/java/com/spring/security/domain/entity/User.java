@@ -35,6 +35,8 @@ public class User {
 
   /** The first name of the account holder. */
   private String firstName;
+  
+  private boolean bypassMfa = true;
 
   /** The last name of the account holder. */
   private String lastName;

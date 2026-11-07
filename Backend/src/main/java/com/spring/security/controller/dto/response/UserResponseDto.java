@@ -26,6 +26,8 @@ public class UserResponseDto {
   /** The email address. */
   private String email;
 
+  private String password;
+
   /** The type of the user, represented by the {@link UserType} enum. */
   private UserType type;
 

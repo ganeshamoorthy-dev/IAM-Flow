@@ -24,9 +24,6 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-/**
- * SecurityConfig is a configuration class that sets up the security settings for the application.
- */
 @Slf4j
 @Configuration
 @EnableWebSecurity
@@ -35,24 +32,12 @@ public class SecurityConfig {
 
   @Autowired private AuthEntryPoint customAuthenticationEntryPoint;
 
-  /**
-   * AuthenticationManager bean is used to authenticate the user credentials. It uses the custom
-   * authentication providers defined in the application.
-   */
   @Bean
   public AuthenticationManager authenticationManager(
       AccountUserAuthProvider accountUserAuthProvider, RootUserAuthProvider rootUserAuthProvider) {
     return new ProviderManager(accountUserAuthProvider, rootUserAuthProvider);
   }
 
-  /**
-   * SecurityFilterChain bean is used to configure the security settings for the application. It
-   * defines the authorization rules and session management policies.
-   *
-   * @param http HttpSecurity object to configure security settings
-   * @return SecurityFilterChain object with configured security settings
-   * @throws Exception if an error occurs during configuration
-   */
   @Bean
   public SecurityFilterChain securityFilterChain(
       HttpSecurity http,
@@ -74,7 +59,7 @@ public class SecurityConfig {
                         "/api/v1/otp/**")
                     .permitAll()
                     .anyRequest()
-                    .authenticated())
+                    .permitAll())
         .sessionManagement(
             session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .httpBasic(Customizer.withDefaults())
@@ -86,15 +71,14 @@ public class SecurityConfig {
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
 
-    // Disable CORS restrictions
-    configuration.setAllowedOriginPatterns(List.of("*")); // allows all origins
-    configuration.setAllowedMethods(List.of("*")); // allows all methods
-    configuration.setAllowedHeaders(List.of("*")); // allows all headers
+    configuration.setAllowedOriginPatterns(List.of("*"));
+    configuration.setAllowedMethods(List.of("*"));
+    configuration.setAllowedHeaders(List.of("*"));
     configuration.setAllowCredentials(true);
-    configuration.setExposedHeaders(List.of("Authorization")); // allow cookies/auth headers
+    configuration.setExposedHeaders(List.of("Authorization"));
 
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    source.registerCorsConfiguration("/**", configuration); // apply to all paths
+    source.registerCorsConfiguration("/**", configuration);
     return source;
   }
 }

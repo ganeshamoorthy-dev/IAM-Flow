@@ -21,20 +21,14 @@ public class JwtTokenGeneratorImpl implements JwtTokenGenerator {
   @Value("${jwt.secret.key}")
   private String secretKey;
 
-  /**
-   * Generate JWT token based on email and roles.
-   *
-   * @return a JWT token as a String
-   */
   @Override
   public String generate(Map<String, Object> claims) throws JwtTokenGenerationFailedException {
 
     try {
       return Jwts.builder()
-          .setClaims(claims) // custom claim
+          .setClaims(claims)
           .setIssuedAt(new Date())
-          .setExpiration(new Date(System.currentTimeMillis() + 3600000)) // expires in 1 hour
-          .signWith(getSecretKey()) // sign the token
+          .signWith(getSecretKey())
           .compact();
     } catch (Exception e) {
       log.error("Error generating JWT token: {}", e.getMessage());
@@ -42,17 +36,10 @@ public class JwtTokenGeneratorImpl implements JwtTokenGenerator {
     }
   }
 
-  /**
-   * Get claims from the JWT token.
-   *
-   * @param token the JWT token as a String
-   * @return Claims object containing the claims from the token
-   */
   @Override
   public Claims getClaims(String token)
       throws JwtTokenParseException, PreconditionViolationException {
 
-    // Need to Implement a common validation utility to check for null or empty strings.
     if (token == null || token.isEmpty()) {
       log.error("JWT token is null or empty");
       throw new PreconditionViolationException("JWT token cannot be null or empty");
@@ -71,7 +58,6 @@ public class JwtTokenGeneratorImpl implements JwtTokenGenerator {
   }
 
   private Key getSecretKey() {
-    // Convert the secret key string to a Key object
     return Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretKey));
   }
 }

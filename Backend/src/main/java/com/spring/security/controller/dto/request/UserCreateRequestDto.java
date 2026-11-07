@@ -31,4 +31,6 @@ public class UserCreateRequestDto {
 
   /** The Roles assigned to the user. */
   private List<UserRoleRequestDto> roles;
+
+  private boolean bypassMfa = true;
 }

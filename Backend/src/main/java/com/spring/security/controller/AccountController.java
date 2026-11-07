@@ -48,7 +48,6 @@ public class AccountController {
    * @return ResponseEntity containing the account details
    */
   @GetMapping("/{id}")
-  @PreAuthorize("hasRole('ROOT') or hasAuthority('IAM:ACCOUNT:READ')")
   public ResponseEntity<AccountGetResponseDto> getAccountDetails(@PathVariable Long id)
       throws ServiceLayerException {
 

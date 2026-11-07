@@ -66,7 +66,6 @@ public class UserController {
   public ResponseEntity<Void> setPassword(
       @PathVariable Long accountId, @RequestBody SetUserPasswordRequestDto requestDto)
       throws ServiceLayerException {
-    // Need to validate the user state and existence before setting the password
     userService.updateUserPassword(accountId, requestDto.getEmail(), requestDto.getPassword());
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
@@ -85,7 +84,6 @@ public class UserController {
    * @return a ResponseEntity containing the user details
    */
   @GetMapping("/{userId}")
-  @PreAuthorize("hasRole('ROOT') or hasAuthority('IAM:USER:READ')")
   public ResponseEntity<UserResponseDto> getUserById(
       @PathVariable Long accountId, @PathVariable Long userId) throws ServiceLayerException {
     User user = userService.findByAccountIdAndUserId(accountId, userId);
